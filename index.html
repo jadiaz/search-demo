@@ -36,20 +36,14 @@
             </ul>
             <h5>Search Query: <strong>{{searchResults}}</strong></h5>
 
-            <div class="row">
-                <table class="table table-condensed table-striped">
-                    <tbody>
-                        <tr data-ng-repeat="result in vm.results">
-                            <td>
-                                {{result.Title}}
-                            </td>
-                            <td>
-                                {{result.Description}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <ul class="list-group" data-ng-repeat="result in vm.results">
+                <li class="list-group-item">
+                    <div class="row">
+                        <a href="{{result.Url}}" title="{{result.Title}}">{{result.Title}}</a>
+                        {{result.Description}}
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
 
