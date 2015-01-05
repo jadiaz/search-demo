@@ -12,7 +12,7 @@
         vm.search = search;
         vm.hasResults = false;
         vm.results = [];
-        vm.title = 'Type-S: Search Application Technology Demonstrator';
+        vm.title = 'Search Application Technology Demonstrator';
 
         activate();
 
@@ -22,10 +22,16 @@
 
         function search() {
             console.log("[SearchController] search button pressed.")
-            var results = searchservice.webSearch();
-            if (results.length > 0)
-                vm.hasResults = true;
-            return vm.results = results;
+            var results = [];
+
+            searchservice.webSearch().then(function(data) {
+                console.log(data);
+                results = data;
+                if (results.length > 0)
+                    vm.hasResults = true;
+                
+                return vm.results = results;
+            });
         }
     }
 })();
