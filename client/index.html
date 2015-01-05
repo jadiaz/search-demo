@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html data-ng-app="search.demo">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <title>Search Application Technology Demonstrator</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="content/css/site.css" rel="stylesheet" />
+</head>
+<body data-ng-controller="SearchController as vm">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Search Demo:</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group long">
+                        <input type="text" class="form-control" data-ng-model="searchResults" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" data-ng-click="vm.search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <section class="container-fluid">
+        <div data-ng-show="vm.hasResults">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">Web</a></li>
+                <li role="presentation"><a href="#">Images</a></li>
+                <li role="presentation"><a href="#">News</a></li>
+            </ul>
+            <h5>Search Query: <strong>{{searchResults}}</strong></h5>
+
+            <div class="row">
+                <table class="table table-condensed table-striped">
+                    <tbody>
+                        <tr data-ng-repeat="result in vm.results">
+                            <td>
+                                {{result.title}}
+                            </td>
+                            <td>
+                                {{result.description}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="app/app.module.js"></script>
+
+    <script src="app/core/core.module.js"></script>
+    <script src="app/core/config.js"></script>
+    <script src="app/core/searchservice.js"></script>
+
+    <script src="app/search/search.module.js"></script>
+    <script src="app/search/search.controller.js"></script>
+</body>
+</html>
