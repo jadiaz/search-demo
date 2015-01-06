@@ -18,9 +18,9 @@
             <div class="collapse navbar-collapse">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="input-group long">
-                        <input type="text" class="form-control" data-ng-model="searchResults" placeholder="Search for...">
+                        <input id="searchBox" type="text" class="form-control" data-ng-model="searchResults" placeholder="Search for...">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" data-ng-click="vm.search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button id="searchBtn" class="btn btn-default" type="button" data-ng-click="vm.search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </span>
                     </div>
                 </form>
@@ -30,9 +30,9 @@
     <section class="container-fluid">
         <div data-ng-show="vm.hasResults">
             <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#">Web</a></li>
-                <li role="presentation"><a href="#">Images</a></li>
-                <li role="presentation"><a href="#">News</a></li>
+                <li id="web" role="presentation" class="active"><a href="#">Web</a></li>
+                <li id="images" role="presentation"><a href="#">Images</a></li>
+                <li id="news" role="presentation"><a href="#">News</a></li>
             </ul>
             <h5>Search Query: <strong>{{searchResults}}</strong></h5>
 
