@@ -3,20 +3,22 @@ describe('search controller', function() {
 
     beforeEach(module('search.demo'));
 
-    beforeEach(inject(function($controller) {
-        controller = $controller('SearchController');
-    }));
+    describe('default controller tests', function() {
+        beforeEach(inject(function($controller) {
+            controller = $controller('SearchController');
+        }));
 
-    it('should load the search controller when the application is accessed', function() {
-        expect(controller).toBeDefined();
-    });
+        it('should load the search controller when the application is accessed', function() {
+            expect(controller).toBeDefined();
+        });
 
-    it('should set the title of the page', function() {
-        expect(controller.title).toBe('Search Application Technology Demonstrator');
-    });
+        it('should set the title of the page', function() {
+            expect(controller.title).toBe('Search Application Technology Demonstrator');
+        });
 
-    it('should have a method to allow for searching the web', function() {
-        expect(typeof(controller.search)).toBe("function");
+        it('should have a method to allow for searching the web', function() {
+            expect(typeof(controller.search)).toBe("function");
+        });
     });
 
     describe('search function', function() {
@@ -65,7 +67,6 @@ describe('search controller', function() {
         it('should call the search service', function() {
             spyOn(BingServiceMock, 'webSearch').and.returnValue(returnedResults);
             searchController.search();
-            console.log(searchController.results);
             expect(BingServiceMock.webSearch).toHaveBeenCalled();
         });
 
