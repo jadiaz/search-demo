@@ -1,8 +1,16 @@
 describe ('Bing Service', function() {
-
-  beforeEach(module('search.demo'));
+  var bingSvc;
   
-  xit('should send a web query to the Bing API');
+  beforeEach(module('search.demo'));
+
+  beforeEach(inject(function ($injector) {
+    bingSvc = $injector.get('BingService');
+  }));
+
+  it('should allow a generic web search to be made', function () {
+    pending();
+  });
+
   xit('should send a image query to the Bing API');
   xit('should send a news query to the Bing API');
 });

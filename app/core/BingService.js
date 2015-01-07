@@ -3,18 +3,18 @@
 
     angular
         .module('search.demo.core')
-        .factory('searchservice', searchservice);
+        .factory('BingService', BingService);
 
-    searchservice.$inject = ['$resource', '$q'];
+    BingService.$inject = ['$resource', '$q'];
 
-    function searchservice($resource, $q) {
+    function BingService ($resource, $q) {
         var service = {
             webSearch: queryWeb,
             imgSearch: queryImages,
             newsSearch: queryNews
         };
 
-        var defaults = {
+        var _defaults = {
             rootUri: 'https://api.datamarket.azure.com/Bing/Search/',
             accessKey: 'EuGXPt5IrIzekZggSdyi35bNHXX5HNODBMsXnZmU1yQ=',
             service: 'Web',
@@ -25,7 +25,7 @@
             skip: 0
         };
 
-        var requestUri = defaults.rootUri + ':service/'
+        var requestUri = _defaults.rootUri + ':service/'
 
         var Base64 = {
             // private property
@@ -139,7 +139,7 @@
             { 
                 query: { 
                     method: 'GET',
-                    headers: { Authorization: 'Basic ' + Base64.encode(defaults.accessKey + ':' + defaults.accessKey) },
+                    headers: { Authorization: 'Basic ' + Base64.encode(_defaults.accessKey + ':' + _defaults.accessKey) },
                     responseType: 'JSON'
                 }
             });

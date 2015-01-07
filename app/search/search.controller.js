@@ -5,7 +5,7 @@
         .module('search.demo.search')
         .controller('SearchController', SearchController);
 
-    SearchController.$inject = ['searchservice'];
+    SearchController.$inject = ['BingService'];
 
     function SearchController(searchservice) {
         var vm = this;
@@ -29,7 +29,7 @@
                 results = data;
                 if (results.length > 0)
                     vm.hasResults = true;
-                
+
                 return vm.results = results;
             });
         }

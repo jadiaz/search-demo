@@ -61,7 +61,7 @@ describe('search controller', function() {
             defer.resolve(mockResults);
             returnedResults = defer.promise;
 
-            searchController = $controller('SearchController', {searchservice: BingServiceMock});
+            searchController = $controller('SearchController', {BingService: BingServiceMock});
         }));
 
         it('should call the search service', function() {
@@ -82,10 +82,10 @@ describe('search controller', function() {
     describe('search function - not mocked', function() {
         var controller;
 
-        beforeEach(module('search.demo.searchservice'));
+        beforeEach(module('search.demo.BingService'));
 
         beforeEach(inject(function ($controller) {
-            controller = ('SearchController', {searchservice: searchservice});
+            controller = ('SearchController', {BingService: BingService});
         }));
 
         it('results should have a title, a description and a url to link to the site', function() {
