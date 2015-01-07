@@ -4,7 +4,7 @@ describe('search controller', function() {
     beforeEach(module('search.demo'));
 
     describe('default controller tests', function() {
-        beforeEach(inject(function($controller) {
+        beforeEach(inject(function ($controller) {
             controller = $controller('SearchController');
         }));
 
@@ -56,7 +56,7 @@ describe('search controller', function() {
             }
         ];
 
-        beforeEach(inject(function($controller, $q) {
+        beforeEach(inject(function ($controller, $q) {
             var defer = $q.defer();
             defer.resolve(mockResults);
             returnedResults = defer.promise;
@@ -70,9 +70,23 @@ describe('search controller', function() {
             expect(BingServiceMock.webSearch).toHaveBeenCalled();
         });
 
-        it('should return an array of results', function() {
+        it('should return an array with more than one results', function() {
             expect(Array.isArray(searchController.results)).toBe(true);
         });
+
+        it('should take a string as input', function() {
+            pending();
+        });
+    });
+
+    describe('search function - not mocked', function() {
+        var controller;
+
+        beforeEach(module('search.demo.searchservice'));
+
+        beforeEach(inject(function ($controller) {
+            controller = ('SearchController', {searchservice: searchservice});
+        }));
 
         it('results should have a title, a description and a url to link to the site', function() {
             pending();
