@@ -30,18 +30,18 @@
     <section class="container-fluid">
         <div data-ng-show="vm.hasResults">
             <ul class="nav nav-pills">
-                <li id="web" role="presentation" class="active"><a href="#">Web</a></li>
-                <li id="images" role="presentation"><a href="#">Images</a></li>
-                <li id="news" role="presentation"><a href="#">News</a></li>
+                <li id="web" role="presentation" class="active"><a href="#" data-ng-click="vm.searchType('Web')">Web</a></li>
+                <li id="images" role="presentation"><a href="#" data-ng-click="vm.searchType('Image')">Images</a></li>
+                <li id="news" role="presentation"><a href="#" data-ng-click="vm.searchType('News')">News</a></li>
             </ul>
-            <h5>Search Query: <strong>{{vm.query}}</strong></h5>
+            <h6>Searching for: <strong>{{vm.query}}</strong></h6>
 
             <ul class="list-group" data-ng-repeat="result in vm.results">
                 <li class="list-group-item">
                     <div class="row">
                         <a href="{{result.Url}}" title="{{result.Title}}">{{result.Title}}</a>
                         {{result.Description}}
-                        <img src="{{result.MediaUrl}}" title="{{result.Title}}" />
+                        <img data-ng-src="{{result.MediaUrl}}" title="{{result.Title}}" />
                     </div>
                 </li>
             </ul>

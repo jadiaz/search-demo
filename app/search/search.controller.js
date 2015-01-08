@@ -9,7 +9,9 @@
 
     function SearchController(searchservice) {
         var vm = this;
+        vm.searchOperation = 'Web';
         vm.search = search;
+        vm.searchType = setOperation;
         vm.query = "";
         vm.hasResults = false;
         vm.results = [];
@@ -20,6 +22,11 @@
         function activate() {
         }
 
+        function setOperation(type) {
+            vm.searchOperation = type;
+            this.search();
+        }
+
         function search() {
             var results = [];
 
@@ -27,11 +34,10 @@
             {
                 searchservice.query ( 
                     { 
-                        service: 'Web', 
+                        service: vm.searchOperation, 
                         Query: "'" + vm.query + "'" 
                     }, 
                     function (data) {
-                        console.log(data);
                         vm.hasResults = true;
                         return vm.results = data.d.results;
                     }, 
