@@ -5,16 +5,11 @@
         .module('search.demo.core')
         .factory('BingService', BingService);
 
-    BingService.$inject = ['$resource', '$q'];
+    BingService.$inject = ['$resource'];
 
-    function BingService ($resource, $q) {
-        var service = {
-            webSearch: queryWeb,
-            imgSearch: queryImages,
-            newsSearch: queryNews
-        };
-
-        var _defaults = {
+    function BingService ($resource) {
+        
+        var _apiParams = {
             rootUri: 'https://api.datamarket.azure.com/Bing/Search/',
             accessKey: 'EuGXPt5IrIzekZggSdyi35bNHXX5HNODBMsXnZmU1yQ=',
             service: 'Web',
@@ -25,7 +20,7 @@
             skip: 0
         };
 
-        var requestUri = _defaults.rootUri + ':service/'
+        var requestUri = _apiParams.rootUri + ':service/'
 
         var Base64 = {
             // private property
@@ -129,56 +124,18 @@
             }
         }
 
-        var Bing = $resource(
+        return $resource (
             requestUri,
             {
-                service: 'Web',
-                Query: "'xbox'",
                 $format: 'json'
             },
             { 
                 query: { 
                     method: 'GET',
-                    headers: { Authorization: 'Basic ' + Base64.encode(_defaults.accessKey + ':' + _defaults.accessKey) },
+                    headers: { Authorization: 'Basic ' + Base64.encode(_apiParams.accessKey + ':' + _apiParams.accessKey) },
                     responseType: 'JSON'
                 }
-            });
-
-        return service;
-
-        function queryWeb() {
-            var d = $q.defer();
-
-            Bing.query(function(response) {
-                d.resolve(response.d.results);
-            });
-
-            return d.promise;
-        }
-
-        function queryImages() {
-            return getSampleSearchResults();
-        }
-
-        function queryNews() {
-            return getSampleSearchResults();
-        }
-
-        function getSampleSearchResults() {
-            return [
-                { title: 'sample title 1', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 2', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 3', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 4', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 5', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 6', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 7', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 8', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 9', description: 'sample description', link: 'http://www.bing.com' },
-                { title: 'sample title 10', description: 'sample description', link: 'http://www.bing.com' }
-            ];
-        }
-
-        
+            }
+        );
     }
 })();

@@ -10,6 +10,7 @@
     function SearchController(searchservice) {
         var vm = this;
         vm.search = search;
+        vm.query = "";
         vm.hasResults = false;
         vm.results = [];
         vm.title = 'Search Application Technology Demonstrator';
@@ -24,14 +25,20 @@
             console.log("[SearchController] search button pressed.")
             var results = [];
 
-            searchservice.webSearch().then(function(data) {
-                console.log(data);
-                results = data;
-                if (results.length > 0)
+            searchservice.query ( 
+                { 
+                    service: 'Web', 
+                    Query: "'" + vm.query + "'" 
+                }, 
+                function (data) {
+                    console.log(data);
                     vm.hasResults = true;
-
-                return vm.results = results;
-            });
+                    return vm.results = data.d.results;
+                }, 
+                function (error) { 
+                    console.log( 'Service call returned: ' + error.statusText + ' (' + error.status + ')'); 
+                }
+            );
         }
     }
 })();

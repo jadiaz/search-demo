@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="input-group long">
-                        <input id="searchBox" type="text" class="form-control" data-ng-model="searchResults" placeholder="Search for...">
+                        <input id="searchBox" type="text" class="form-control" data-ng-model="vm.query" placeholder="Search for...">
                         <span class="input-group-btn">
                             <button id="searchBtn" class="btn btn-default" type="button" data-ng-click="vm.search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </span>
@@ -34,13 +34,14 @@
                 <li id="images" role="presentation"><a href="#">Images</a></li>
                 <li id="news" role="presentation"><a href="#">News</a></li>
             </ul>
-            <h5>Search Query: <strong>{{searchResults}}</strong></h5>
+            <h5>Search Query: <strong>{{vm.query}}</strong></h5>
 
             <ul class="list-group" data-ng-repeat="result in vm.results">
                 <li class="list-group-item">
                     <div class="row">
                         <a href="{{result.Url}}" title="{{result.Title}}">{{result.Title}}</a>
                         {{result.Description}}
+                        <img src="{{result.MediaUrl}}" title="{{result.Title}}" />
                     </div>
                 </li>
             </ul>

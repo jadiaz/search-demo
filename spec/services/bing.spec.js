@@ -8,29 +8,32 @@ describe ('Bing Service', function() {
   }));
 
   it('should set error if no search input is passed in', function () {
-    var searchStr = 'xbox';
-    var searchResults = []; 
-    bingSvc.webSearch(searchStr).then(
-      function (data) {
-        console.log(data);
-        searchResults = data;
-      },
-      function (error) {
-        console.log(error);
-      }
-    ).catch(function(err){
-      console.log(err);
-    });
+    // var searchStr = '';
+    // var srvOp = 'Webs';
+    // var error;
 
-    expect(searchResults.length).not.toBe(0);
+    // console.log(bingSvc.query());
+
+    // bingSvc.query({ Query: "'" + searchStr + "'", service: srvOp}, 
+    //   function (data) {
+    //     console.log(data);
+    //   },
+    //   function (err) {
+    //     console.log(err);
+    //     expect(err).toBeDefined();
+    //   }
+    // );
   });
 
   it('should return results based on search query passed in', function () {
-    var searchResults = [];
-    bingSvc.webSearch('xbox').then(function (data) {
-      searchResults = data;
-      expect(searchResults.length).toBe(0);
-    });
+    // var searchStr = 'xbox';
+
+    // bingSvc.query({ Query: "'" + searchStr + "'", service: 'Web'}, 
+    //   function (data) {
+    //     console.log(data);
+    //     expect(data.d.results.length).not.toBe(0);
+    //   }
+    // );
   });
 
   xit('should send a image query to the Bing API');

@@ -26,9 +26,7 @@ describe('search controller', function() {
         var searchController, returnedResults;
 
         var BingServiceMock = {
-            webSearch: function(){},
-            imgSearch: function(){},
-            newsSearch: function(){}
+            query: function(){}
         };
 
         var mockResults = [
@@ -65,17 +63,13 @@ describe('search controller', function() {
         }));
 
         it('should call the search service', function() {
-            spyOn(BingServiceMock, 'webSearch').and.returnValue(returnedResults);
+            spyOn(BingServiceMock, 'query').and.returnValue(returnedResults);
             searchController.search();
-            expect(BingServiceMock.webSearch).toHaveBeenCalled();
+            expect(BingServiceMock.query).toHaveBeenCalled();
         });
 
         it('should return an array with more than one results', function() {
             expect(Array.isArray(searchController.results)).toBe(true);
-        });
-
-        it('should take a string as input', function() {
-            pending();
         });
     });
 
