@@ -3,7 +3,7 @@ search-demo
 
 Search engine technology demonstrator
 
-## Technologies used
+## Technologies Used
 - AngularJS
 - Bing Search API
 - [Jasmine](http://jasmine.github.io/) for unit testing
