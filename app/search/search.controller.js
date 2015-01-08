@@ -14,7 +14,9 @@
         vm.searchOperation = 'Web';
         vm.search = search;
         vm.searchType = setOperation;
+        vm.showWeb = true;
         vm.showImages = false;
+        vm.showNews = false;
         vm.query = "";
         vm.hasResults = false;
         vm.results = [];
@@ -29,22 +31,30 @@
             switch (type) {
                 case 'Web':
                     vm.searchOperation = 'Web';
+                    vm.showWeb = true;
                     vm.showImages = false;
+                    vm.showNews = false;
                     _top = '25';
                     break;
                 case 'Image':
                     vm.searchOperation = 'Image';
+                    vm.showWeb = false;
                     vm.showImages = true;
+                    vm.showNews = false;
                     _top = '25';
                     break;
                 case 'News':
                     vm.searchOperation = 'News';
+                    vm.showWeb = false;
                     vm.showImages = false;
+                    vm.showNews = true;
                     _top = '25';
                     break;
                 default:
                     vm.searchOperation = 'Web';
+                    vm.showWeb = true;
                     vm.showImages = false;
+                    vm.showNews = false;
                     _top = '25';
             }
             this.search();

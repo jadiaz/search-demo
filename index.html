@@ -32,9 +32,9 @@
         <div class="center-block" data-ng-show="vm.hasResults">
             <!-- Begin search selectors -->
             <ul class="nav nav-pills">
-                <li id="web" role="presentation" class="active"><a href="#" data-ng-click="vm.searchType('Web')">Web</a></li>
-                <li id="images" role="presentation"><a href="#" data-ng-click="vm.searchType('Image')">Images</a></li>
-                <li id="news" role="presentation"><a href="#" data-ng-click="vm.searchType('News')">News</a></li>
+                <li id="web" role="presentation" data-ng-class="{ active: vm.showWeb }"><a href="#" data-ng-click="vm.searchType('Web')">Web</a></li>
+                <li id="images" role="presentation" data-ng-class="{ active: vm.showImages }"><a href="#" data-ng-click="vm.searchType('Image')">Images</a></li>
+                <li id="news" role="presentation" data-ng-class="{ active: vm.showNews }"><a href="#" data-ng-click="vm.searchType('News')">News</a></li>
             </ul>
             <!-- End search selectors -->
             <!-- Begin results repeater -->
