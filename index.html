@@ -58,7 +58,7 @@
             <!-- End results repeater -->
             <!-- Begin images repeater -->
             <div class="col-md-3" data-ng-repeat="imgResult in vm.results" data-ng-show="vm.showImages">
-                <img class="img-responsive img-thumbnail" data-ng-src="{{imgResult.Thumbnail.MediaUrl}}" title="{{imgResult.Title}}" />
+                <a href="{{ imgResult.MediaUrl }}"><img class="img-responsive img-thumbnail" data-ng-src="{{imgResult.Thumbnail.MediaUrl}}" title="{{imgResult.Title}}" /></a>
             </div>
             <!-- End images repeater -->
         </div>
