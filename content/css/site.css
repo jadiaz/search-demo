@@ -1,3 +1,29 @@
+a { 
+  color: #8A0116;
+}
+
+.nav-pills {
+  margin-top: -20px;
+}
+
+.nav-pills > li > a {
+  border-radius: 0;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #8A0116;
+  background: none;
+  border-bottom: 3px solid #8A0116;
+}
+
+.list-group {
+  margin-bottom: 0 !important;
+}
+
+.list-group-item {
+  border: none;
+}
+
 .long {
     width: 680px;
 }

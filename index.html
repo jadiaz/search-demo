@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html data-ng-app="search.demo">
+<html data-ng-app="search.demo" lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search Application Technology Demonstrator</title>
 
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
@@ -28,23 +29,31 @@
         </div>
     </nav>
     <section class="container-fluid">
-        <div data-ng-show="vm.hasResults">
+        <div class="center-block" data-ng-show="vm.hasResults">
+            <!-- Begin search selectors -->
             <ul class="nav nav-pills">
                 <li id="web" role="presentation" class="active"><a href="#" data-ng-click="vm.searchType('Web')">Web</a></li>
                 <li id="images" role="presentation"><a href="#" data-ng-click="vm.searchType('Image')">Images</a></li>
                 <li id="news" role="presentation"><a href="#" data-ng-click="vm.searchType('News')">News</a></li>
             </ul>
-            <h6>Searching for: <strong>{{vm.query}}</strong></h6>
-
+            <!-- End search selectors -->
+            <div class="col-xs-12 col-md-7 col-md-offset-1">
             <ul class="list-group" data-ng-repeat="result in vm.results">
                 <li class="list-group-item">
                     <div class="row">
-                        <a href="{{result.Url}}" title="{{result.Title}}">{{result.Title}}</a>
-                        {{result.Description}}
+                        <div class="col-xs-12">
+                            <a href="{{result.Url}}" title="{{result.Title}}"><h4>{{result.Title}}</h2></a>                            
+                        </div>
+                        <div class="col-xs-12 text-muted">
+                            {{result.Description}}                          
+                        </div>
+
                         <img data-ng-src="{{result.MediaUrl}}" title="{{result.Title}}" />
                     </div>
                 </li>
             </ul>
+            </div>
+
         </div>
     </section>
 
