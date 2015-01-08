@@ -18,11 +18,9 @@
         activate();
 
         function activate() {
-            console.log("[SearchController] controller has been activated.");
         }
 
         function search() {
-            console.log("[SearchController] search button pressed.")
             var results = [];
 
             if (vm.query)
