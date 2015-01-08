@@ -9,6 +9,8 @@
 
     function SearchController(searchservice) {
         var vm = this;
+        var _top = '25';
+
         vm.searchOperation = 'Web';
         vm.search = search;
         vm.searchType = setOperation;
@@ -23,7 +25,23 @@
         }
 
         function setOperation(type) {
-            vm.searchOperation = type;
+            switch (type) {
+                case 'Web':
+                    vm.searchOperation = 'Web';
+                    _top = '25';
+                    break;
+                case 'Image':
+                    vm.searchOperation = 'Image';
+                    _top = '25';
+                    break;
+                case 'News':
+                    vm.searchOperation = 'News';
+                    _top = '25';
+                    break;
+                default:
+                    vm.searchOperation = 'Web';
+                    _top = '25';
+            }
             this.search();
         }
 
@@ -35,7 +53,8 @@
                 searchservice.query ( 
                     { 
                         service: vm.searchOperation, 
-                        Query: "'" + vm.query + "'" 
+                        Query: "'" + vm.query + "'",
+                        $top: _top
                     }, 
                     function (data) {
                         console.log(data.d);
