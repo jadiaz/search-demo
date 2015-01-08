@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="input-group long">
-                        <input id="searchBox" type="text" class="form-control" data-ng-model="vm.query" placeholder="Search for...">
+                        <input id="searchBox" type="text" class="form-control" data-ng-model="vm.query" placeholder="Search for..." value=""/>
                         <span class="input-group-btn">
                             <button id="searchBtn" class="btn btn-default" type="button" data-ng-click="vm.search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </span>
@@ -37,26 +37,30 @@
                 <li id="news" role="presentation"><a href="#" data-ng-click="vm.searchType('News')">News</a></li>
             </ul>
             <!-- End search selectors -->
-            <div class="col-xs-12 col-md-7 col-md-offset-1">
-            <ul class="list-group" data-ng-repeat="result in vm.results">
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <a href="{{result.Url}}" title="{{result.Title}}"><h4>{{result.Title}}</h2></a>                            
+            <!-- Begin results repeater -->
+            <div class="col-xs-12 col-md-7 col-md-offset-1" data-ng-hide="vm.showImages">
+                <ul class="list-group">
+                    <li class="list-group-item" data-ng-repeat="result in vm.results">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a href="{{result.Url}}" title="{{result.Title}}"><h4>{{result.Title}}</h2></a>                            
+                            </div>
+                            <div class="col-xs-12 text-muted">
+                                {{result.Description}}                          
+                            </div>
+                            <div class="col-xs-12 text-muted">
+                                <h6><a class="site-url" href="{{result.Url}}" title="{{result.DisplayUrl}}">{{result.DisplayUrl}}</a></h5>
+                            </div>
                         </div>
-                        <div class="col-xs-12 text-muted">
-                            {{result.Description}}                          
-                        </div>
-                        <div class="col-xs-12 text-muted">
-                            <h6><a class="site-url" href="{{result.Url}}" title="{{result.DisplayUrl}}">{{result.DisplayUrl}}</a></h5>
-                        </div>
-
-                        <img data-ng-src="{{result.MediaUrl}}" title="{{result.Title}}" />
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
             </div>
-
+            <!-- End results repeater -->
+            <!-- Begin images repeater -->
+            <div class="col-md-3" data-ng-repeat="imgResult in vm.results" data-ng-show="vm.showImages">
+                <img class="img-responsive img-thumbnail" data-ng-src="{{imgResult.Thumbnail.MediaUrl}}" title="{{imgResult.Title}}" />
+            </div>
+            <!-- End images repeater -->
         </div>
     </section>
 

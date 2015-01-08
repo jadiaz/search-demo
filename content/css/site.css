@@ -2,6 +2,10 @@ a {
   color: #8A0116;
 }
 
+img {
+  width: 240px;
+}
+
 .nav-pills {
   margin-top: -20px;
 }
