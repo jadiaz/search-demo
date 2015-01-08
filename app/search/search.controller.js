@@ -25,20 +25,28 @@
             console.log("[SearchController] search button pressed.")
             var results = [];
 
-            searchservice.query ( 
-                { 
-                    service: 'Web', 
-                    Query: "'" + vm.query + "'" 
-                }, 
-                function (data) {
-                    console.log(data);
-                    vm.hasResults = true;
-                    return vm.results = data.d.results;
-                }, 
-                function (error) { 
-                    console.log( 'Service call returned: ' + error.statusText + ' (' + error.status + ')'); 
-                }
-            );
+            if (vm.query)
+            {
+                searchservice.query ( 
+                    { 
+                        service: 'Web', 
+                        Query: "'" + vm.query + "'" 
+                    }, 
+                    function (data) {
+                        console.log(data);
+                        vm.hasResults = true;
+                        return vm.results = data.d.results;
+                    }, 
+                    function (error) { 
+                        console.log( 'Service call returned: ' + error.statusText + ' (' + error.status + ')'); 
+                    }
+                );
+            }
+            else
+            {
+                vm.hasResults = false;
+            }
+
         }
     }
 })();
