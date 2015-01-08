@@ -38,6 +38,7 @@
                         Query: "'" + vm.query + "'" 
                     }, 
                     function (data) {
+                        console.log(data.d);
                         vm.hasResults = true;
                         return vm.results = data.d.results;
                     }, 
