@@ -40,16 +40,16 @@
             <!-- Begin results repeater -->
             <div class="col-xs-12 col-md-7 col-md-offset-1" data-ng-hide="vm.showImages">
                 <ul class="list-group">
-                    <li class="list-group-item" data-ng-repeat="result in vm.results">
+                    <li class="list-group-item" data-ng-repeat="result in vm.results[0].value">
                         <div class="row">
                             <div class="col-xs-12">
-                                <a href="{{result.Url}}" title="{{result.Title}}"><h4>{{result.Title}}</h2></a>                            
+                                <a href="{{result.url}}" title="{{result.name}}"><h4>{{result.name}}</h2></a>
                             </div>
                             <div class="col-xs-12 text-muted">
-                                {{result.Description}}                          
+                                {{result.snippet}}
                             </div>
                             <div class="col-xs-12 text-muted">
-                                <h6><a class="site-url" href="{{result.Url}}" title="{{result.DisplayUrl}}">{{result.DisplayUrl}}</a></h5>
+                                <h6><a class="site-url" href="{{result.url}}" title="{{result.displayUrl}}">{{result.displayUrl}}</a></h5>
                             </div>
                         </div>
                     </li>
@@ -57,8 +57,8 @@
             </div>
             <!-- End results repeater -->
             <!-- Begin images repeater -->
-            <div class="col-md-3" data-ng-repeat="imgResult in vm.results" data-ng-show="vm.showImages">
-                <a href="{{ imgResult.MediaUrl }}"><img class="img-responsive img-thumbnail" data-ng-src="{{imgResult.Thumbnail.MediaUrl}}" title="{{imgResult.Title}}" /></a>
+            <div class="col-md-3" data-ng-repeat="imgResult in vm.results[1].value" data-ng-show="vm.showImages">
+                <a href="{{ imgResult.hostPageUrl }}"><img class="img-responsive img-thumbnail" data-ng-src="{{imgResult.contentUrl}}" title="{{imgResult.name}}" /></a>
             </div>
             <!-- End images repeater -->
         </div>

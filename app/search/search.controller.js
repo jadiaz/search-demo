@@ -67,14 +67,14 @@
             {
                 searchservice.query ( 
                     { 
-                        service: vm.searchOperation, 
-                        Query: "'" + vm.query + "'",
-                        $top: _top
+                        q: "'" + vm.query + "'"
                     }, 
                     function (data) {
-                        console.log(data.d);
+                        console.log(data);
                         vm.hasResults = true;
-                        return vm.results = data.d.results;
+                        vm.results.push(data.webPages);
+                        vm.results.push(data.images);
+                        return vm.results;
                     }, 
                     function (error) { 
                         console.log( 'Service call returned: ' + error.statusText + ' (' + error.status + ')'); 

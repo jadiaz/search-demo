@@ -10,8 +10,8 @@
     function BingService ($resource) {
         
         var _apiParams = {
-            rootUri: 'https://api.datamarket.azure.com/Bing/Search/',
-            accessKey: 'EuGXPt5IrIzekZggSdyi35bNHXX5HNODBMsXnZmU1yQ=',
+            rootUri: 'https://api.cognitive.microsoft.com/bing/v7.0/search',
+            accessKey: 'd09427d8328446cdbbc81fcdb87523f4',
             service: 'Web',
             market: 'en-us',
             userAgent: '',
@@ -20,7 +20,7 @@
             skip: 0
         };
 
-        var requestUri = _apiParams.rootUri + ':service/'
+        var requestUri = _apiParams.rootUri
 
         var Base64 = {
             // private property
@@ -132,7 +132,7 @@
             { 
                 query: { 
                     method: 'GET',
-                    headers: { Authorization: 'Basic ' + Base64.encode(_apiParams.accessKey + ':' + _apiParams.accessKey) },
+                    headers: { 'Ocp-Apim-Subscription-Key': _apiParams.accessKey },
                     responseType: 'JSON'
                 }
             }
